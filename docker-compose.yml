@@ -3,7 +3,7 @@ services:
   database:
     image: postgres:16
     environment:
-      POSTGRES_USER: christian
+      POSTGRES_USER: fortytools
       POSTGRES_PASSWORD: HhmotRCStJz8ySUnH9Mn
       POSTGRES_DB: geocoding_development
     volumes:
