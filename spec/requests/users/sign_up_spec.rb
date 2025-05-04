@@ -11,5 +11,9 @@ RSpec.describe 'User Sign up', type: :request do
     it 'renders the registration page' do
       expect(response.body).to include('Sign up')
     end
+
+    it 'renders the registration page' do
+      expect(response.body).to include('Sign up')
+    end
   end
 end
