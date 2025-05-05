@@ -1,43 +1,43 @@
-h1 Welcome! You have signed up successfully.
+h1 = t('.welcome')
 
 ul.address
   li.street
     strong = User.human_attribute_name(:street)
     span
       | :&nbsp;
-      = @user.street
+      = current_user.street
   li.house_number
     strong = User.human_attribute_name(:house_number)
     span
       | :&nbsp;
-      = @user.house_number
+      = current_user.house_number
   li.zip_code
     strong = User.human_attribute_name(:zip_code)
     span
       | :&nbsp;
-      = @user.zip_code
+      = current_user.zip_code
   li.city
     strong = User.human_attribute_name(:city)
     span
       | :&nbsp;
-      = @user.city
+      = current_user.city
   li.state
     strong = User.human_attribute_name(:state)
     span
       | :&nbsp;
-      = @user.state
+      = current_user.state
   li.country
     strong = User.human_attribute_name(:country)
     span
       | :&nbsp;
-      = @user.country
+      = current_user.country
   li.longitude
     strong = User.human_attribute_name(:longitude)
     span
       | :&nbsp;
-      = @user.longitude
+      = current_user.longitude
   li.latitude
     strong = User.human_attribute_name(:latitude)
     span
       | :&nbsp;
-      = @user.latitude
+      = current_user.latitude
