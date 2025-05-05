@@ -5,18 +5,19 @@ RSpec.shared_context 'with Geocoding API request' do
     {
       lat: '1.2345678',
       lon: '2.3456789',
-      address: { road: 'Main Street',
+      address: { road: params[:street],
                  house_number: '1',
-                 postcode: '12345',
-                 city: 'Test city',
+                 postcode: params[:zip_code],
+                 city: params[:city],
                  state: 'Test state',
                  country_code: 'de' }
     }
   end
   before do
+    query = "#{params[:street]} #{params[:city]} #{params[:zip_code]}"
     stub_request(:get, 'https://nominatim.openstreetmap.org/search')
       .with(headers: { 'User-Agent' => 'fortytools' },
-            query: { q: params[:address], format: :json, addressdetails: 1,
+            query: { q: query, format: :json, addressdetails: 1,
                                                         'accept-language' => 'en' })
       .and_return(status: 200, body: geocoded_address.to_json)
   end
@@ -29,7 +30,9 @@ RSpec.describe 'User Registration', type: :request do
         email: 'email@user.com',
         password: 'Passw0rd',
         password_confirmation: 'Passw0rd',
-        address: 'Main street 1 Test',
+        street: 'Main street',
+        city: 'Test city',
+        zip_code: '12345'
       }
     end
     subject(:register_user) { post user_registration_path, params: { user: params } }
@@ -78,12 +81,12 @@ RSpec.describe 'User Registration', type: :request do
       end
     end
 
-    context 'with missing address' do
-      before { params.update address: '' }
+    context 'with missing street' do
+      before { params.update street: '' }
 
       it 'renders missing-address error' do
         register_user
-        expect(response.body).to include(ERB::Util.html_escape "Address can't be blank")
+        expect(response.body).to include(ERB::Util.html_escape "Street can't be blank")
       end
     end
 

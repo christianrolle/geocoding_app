@@ -1,11 +1,14 @@
 class User < ApplicationRecord
-  attr_accessor :address
   geocoded_by :address
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :validatable
-  validates :address, presence: true, on: :create
-  validate :reasonable_address, on: :create, if: -> { address.present? }
+  validates :street, :zip_code, :city, presence: true, on: :create
+  validate :reasonable_address, on: :create, if: -> { address_search_valid? }
   before_create :assign_address_attributes
+
+  def address
+    @address ||= "#{street} #{city} #{zip_code}"
+  end
 
   private
 
@@ -21,5 +24,9 @@ class User < ApplicationRecord
 
   def geocoded_address
     @geocoded_address ||= GeocodedAddress.search(address)
+  end
+
+  def address_search_valid?
+    street.present? && zip_code.present? && city.present?
   end
 end
