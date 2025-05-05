@@ -12,6 +12,8 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # flexible authentication solution for Rails based on Warden
 gem 'devise'
+# geocoding solution for Ruby; allows to wire several external APIs
+gem 'geocoder'
 
 group :development do
   # Preview email in the default browser instead of sending it (e.g. Devise emails)
@@ -29,4 +31,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-rails'
+  # library for stubbing and setting expectations on HTTP requests
+  gem 'webmock'
 end
