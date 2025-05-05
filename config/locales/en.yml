@@ -33,3 +33,11 @@ en:
     errors:
       messages:
         unknown: is unknown
+    attributes:
+      user:
+        street: Street
+        house_number: House number
+        zip_code: Postal code
+        city: Locality
+        state: State
+        country: Country

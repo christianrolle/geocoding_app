@@ -13,6 +13,7 @@ class GeocodedAddress
       latitude: address.latitude,
       longitude: address.longitude,
       street: address.street,
+      house_number: address.house_number,
       city: address.city,
       state: state,
       zip_code: address.postal_code,
