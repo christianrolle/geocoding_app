@@ -31,5 +31,5 @@ class GeocodedAddress
   end
 
   attr_reader :address
-  delegate :data, to: :address
+  delegate :data, to: :address, allow_nil: true
 end
