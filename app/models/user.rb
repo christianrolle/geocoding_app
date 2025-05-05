@@ -1,3 +1,5 @@
+require 'countries'
+
 class User < ApplicationRecord
   geocoded_by :address
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
@@ -8,6 +10,10 @@ class User < ApplicationRecord
 
   def address
     @address ||= "#{street} #{city} #{zip_code}"
+  end
+
+  def country
+    @country ||= ISO3166::Country.new(country_code)
   end
 
   private

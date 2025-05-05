@@ -37,7 +37,7 @@ RSpec.feature 'UserSignUps', type: :feature do
     expect(page).to have_text(geocoded_address[:address][:postcode])
     expect(page).to have_text(geocoded_address[:address][:city])
     expect(page).to have_text(geocoded_address[:address][:state])
-    expect(page).to have_text(geocoded_address[:address][:country_code])
+    expect(page).to have_text('Germany')
     expect(page).to have_text(geocoded_address[:lon])
     expect(page).to have_text(geocoded_address[:lat])
   end

@@ -14,6 +14,8 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'devise'
 # geocoding solution for Ruby; allows to wire several external APIs
 gem 'geocoder'
+# collection of all sorts of useful information for every country in the ISO 3166 standard
+gem 'countries'
 
 group :development do
   # Preview email in the default browser instead of sending it (e.g. Devise emails)
